@@ -8,3 +8,5 @@ typedef struct node {
 void insert(node** l, int data);
 void deleteNode(node** l, int data);
 void printList(node* l);
+void removeDuplicates(node* list);
+node * nthFromLast(node* list, int indx);

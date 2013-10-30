@@ -1,0 +1,20 @@
+# I am a comment, and I want to say that the variable CC will be
+# the compiler to use.
+CC=g++
+# Hey!, I am comment number 2. I want to say that CFLAGS will be the
+# options I'll pass to the compiler.
+CFLAGS=-c -Wall
+
+all: linklist
+
+linklist: mainlinklist.o linklist.o
+			g++ mainlinklist.o linklist.o -o linklist
+
+mainlinklist.o: mainlinklist.cc 
+		g++ -c mainlinklist.cc
+
+linklist.o: linklist.cc
+			g++ -c linklist.cc
+
+clean:
+		rm -f *.o linklist

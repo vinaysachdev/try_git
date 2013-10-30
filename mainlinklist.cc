@@ -20,6 +20,22 @@ int main() {
 					cin >> data;
 					insert(&list, data);
 					break;
+			case 3: cout<<"Enter the data: ";
+					cin >> data;
+					deleteNode(&list, data);
+					break;
+			case 4: removeDuplicates(list);
+					break;
+			case 5: {
+						cout<<"Enter the index from end: ";
+						cin >> data;
+						node* n = nthFromLast(list, data);
+						if(n == NULL)
+							cout<<"No of nodes in list is less than "<<data<<endl;
+						else
+							cout << data << " node from last is: "<< n->data<<endl;
+					}
+					break;
 			case 0: isQuit = true;
 					break;
 			default: isQuit = true; 
@@ -31,8 +47,13 @@ int main() {
 }
 
 void printChoice() {
+	cout<<"   Options"<<endl;
+	cout<<"   -------"<<endl;
 	cout<<"1. Print"<<endl;
 	cout<<"2. Insert"<<endl;
+	cout<<"3. Delete"<<endl;
+	cout<<"4. Remove Duplicates"<<endl;
+	cout<<"5. Nth node from last"<<endl;
 	cout<<"0. Quit"<<endl;
 	cout<<"Choose the option( Enter '0' to quit): "<<endl;
 }
