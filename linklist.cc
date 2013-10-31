@@ -39,6 +39,9 @@ void printList(node* list) {
 	cout << "NULL"<<std::endl;
 }
 
+// start from 2nd element and search backwards if it is a duplicate element
+// if yes then remove that element. By searching backwards you are sure that
+// previous elements are already removed
 void removeDuplicates(node* list) {
 	if(list == NULL) return;
 	node * prev = list;
@@ -76,4 +79,17 @@ node * nthFromLast(node* list, int indx) {
 		behind = behind->next;
 	}
 	return behind;
+}
+
+node * sumLists(node * l1, node * n2) {
+	if(l1 == NULL && l2 == NULL) return NULL;
+	node * sum  = NULL;
+	if(l2 == NULL) {
+		sum = sumLists(l1->next, NULL);	
+	}
+	else if(l1 == NULL) {
+		sum = sumList(NULL, l2->next);
+	}
+	else
+		sum = 
 }
