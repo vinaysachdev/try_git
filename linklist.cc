@@ -81,15 +81,18 @@ node * nthFromLast(node* list, int indx) {
 	return behind;
 }
 
-node * sumLists(node * l1, node * n2) {
+node * sumLists(node * l1, node * l2, int carry) {
 	if(l1 == NULL && l2 == NULL) return NULL;
-	node * sum  = NULL;
-	if(l2 == NULL) {
-		sum = sumLists(l1->next, NULL);	
-	}
-	else if(l1 == NULL) {
-		sum = sumList(NULL, l2->next);
-	}
-	else
-		sum = 
+	int val = carry;
+	node * sumNode  = new node(0);
+	if(l1 != NULL)
+		val += l1->data;
+	if(l2 != NULL)
+		val += l2->data;
+	sumNode->data = val % 10;	
+	sumNode->next = sumLists(l1 == NULL ? NULL : l1, 
+							 l2 == NULL ? NULL : l2,
+							 val > 10 ? 1 : 0);
+		
+	return sumNode;
 }
