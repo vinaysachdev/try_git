@@ -81,10 +81,10 @@ node * nthFromLast(node* list, int indx) {
 	return behind;
 }
 
-node * sumLists(node * l1, node * l2, int carry) {
+node* sumLists(node* l1, node* l2, int carry) {
 	if(l1 == NULL && l2 == NULL) return NULL;
 	int val = carry;
-	node * sumNode  = new node(0);
+	node* sumNode  = new node(0);
 	if(l1 != NULL)
 		val += l1->data;
 	if(l2 != NULL)
@@ -95,4 +95,29 @@ node * sumLists(node * l1, node * l2, int carry) {
 							 val > 10 ? 1 : 0);
 		
 	return sumNode;
+}
+
+
+node* findLoopBeginning(node* head) {
+	node* slow = head;
+	node* fast = head;
+
+	while(fast->next != NULL) {
+		slow = slow->next;
+		fast = fast->next->next;
+		if(slow == fast)
+			break;
+	}
+
+	if(fast->next == NULL) return NULL;
+	fast = head;
+	while(slow != fast) {
+		slow = slow->next;
+		fast = fast->next;
+	}
+	retur fast;	
+}
+
+void reverse(node **list) {
+
 }
