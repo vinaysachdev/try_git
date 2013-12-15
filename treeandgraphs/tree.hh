@@ -96,6 +96,7 @@ node<T>* leftMostChild(node<T> * n) {
 	return n; 
 }
 
+//finds the immediate successor of a given node
 template <typename T>
 node<T>* successor(node<T>* tree) {
 	if(tree == NULL) return NULL;
@@ -163,7 +164,50 @@ node<T>* findCommonAncestor(node<T>* root, node<T>* p, node<T>* q) {
 	return NULL;
 }
 
+// checks whether t2 is subtree of t1
+template <typename T>
+bool isContainTree(node<T>* t1, node<T>* t2) {
+	if(t2 == NULL) return true;
+	return isSubtree(t1, t2);
+}
 
+template <typename T>
+bool isSubtree(node<T>* t1, node<T>* t2) {
+	if(t1 == NULL && t2 == NULL) return true;
+	if(t1 == NULL) return false;
+	if(t2 == NULL) return true;
 
+	if(t1->val == t2->val) {
+		if(isSubtree(t1->left, t2->left) && isSubtree(t1->right, t2->right))
+			return true;
+	}
+	return isSubtree(t1->left, t2) || isSubtree(t1->right, t2);
+}
 
+template <typename T>
+void printPath(vector<T> v, int start, int end) {
+	for(int i = start; i <= end; i++)
+		cout<<v[i]<<" ";
+	cout<<endl;
+}
+
+// print all paths which add upto "sum". The path need not necessarily
+// start from root, it can start from anywhere.
+template <typename T>
+void printAllPathsToSum(node<T>* tree, int sum, vector<T> vecNum, int level) {
+	if(tree == NULL) return;
+	T tmp = sum;
+	vecNum.push_back(tree->val);
+
+	for(int i=level; i <= 0; i--) {
+		tmp -= vecNum[i];
+		if(tmp == 0)
+			printPath(vecNum, i, level);
+	}
+
+	vector<T> v1 = vecNum;
+	vector<T> v2 = vecNum;
+	printAllPathsToSum(tree->left, sum, v1, level+1);
+	printAllPathsToSum(tree->right, sum, v2, level+1);
+}
 
