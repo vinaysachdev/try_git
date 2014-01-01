@@ -12,4 +12,5 @@ void removeDuplicates(node* list);
 node* nthFromLast(node* list, int indx);
 node* sumLists(node* l1, node* l2, int carry);
 node* findLoopBeginning(node * head);
-void reverse(node** list);
+node* reverse(node* list);
+node* reverse_rec(node * list);

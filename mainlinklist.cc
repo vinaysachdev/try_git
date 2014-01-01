@@ -36,6 +36,8 @@ int main() {
 							cout << data << " node from last is: "<< n->data<<endl;
 					}
 					break;
+			case 6: list = reverse(list);
+				    break;	
 			case 0: isQuit = true;
 					break;
 			default: isQuit = true; 
@@ -54,6 +56,7 @@ void printChoice() {
 	cout<<"3. Delete"<<endl;
 	cout<<"4. Remove Duplicates"<<endl;
 	cout<<"5. Nth node from last"<<endl;
+	cout<<"6. reverse the list"<<endl;
 	cout<<"0. Quit"<<endl;
 	cout<<"Choose the option( Enter '0' to quit): "<<endl;
 }

@@ -115,9 +115,26 @@ node* findLoopBeginning(node* head) {
 		slow = slow->next;
 		fast = fast->next;
 	}
-	retur fast;	
+	return fast;	
 }
 
-void reverse(node **list) {
+node * reverse(node * list) {
+	if(list == NULL || list->next == NULL)
+		return list;
+	return reverse_rec(list);
+}
 
+node * reverse_rec(node * list) {
+	node * n = NULL;
+	if(list->next->next == NULL) {
+		n = list->next;
+		list->next->next = list;
+		list->next = NULL;
+		return n;
+	} else {
+		n = reverse_rec(list->next);
+		list->next->next = list;
+		list->next = NULL;
+		return n;
+	}
 }
